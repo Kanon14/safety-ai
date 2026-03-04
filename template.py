@@ -28,7 +28,7 @@ list_of_files = [
     f"{project_name}/utils/main_utils.py",
     f"{project_name}/example.env",
     f"{project_name}/.env",
-    f"{project_name}/runner.py"
+    f"{project_name}/runner.py",
     "notebooks/trials.ipynb",
     "static/.gitkeep",
     "models/.gitkeep",
