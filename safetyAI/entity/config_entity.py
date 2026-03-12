@@ -25,18 +25,12 @@ class DataIngestionConfig:
 
     Attributes:
     - data_ingestion_dir: Directory to store data ingestion artifacts.
-    - feature_store_file_path: Path to the feature store where processed data is stored.
     - roboflow_workspace: Name of the Roboflow workspace.
     - roboflow_project: Name of the Roboflow project.
     """
     data_ingestion_dir: str = os.path.join(
         training_pipeline_config.artifacts_dir,
         DATA_INGESTION_DIR_NAME
-    )
-    
-    feature_store_file_path: str = os.path.join(
-        data_ingestion_dir, 
-        DATA_INGESTION_FEATURE_STORE_DIR
     )
     
     roboflow_workspace: str = ROBOFLOW_WORKSPACE

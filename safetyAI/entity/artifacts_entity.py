@@ -6,12 +6,9 @@ class DataIngestionArtifact:
     Artifact representing the outputs of the Data Ingestion process.
 
     Attributes:
-    - data_zipfile_path: Path to the downloaded dataset zip file.
-    - feature_store_path: Path to the directory where extracted and processed data is stored.
+    - dataset_path: Path to the downloaded dataset zip file.
     """
-    data_zipfile_path: str
-    feature_store_path: str
-    
+    dataset_path: str    
 
 @dataclass
 class DataValidationArtifact:

@@ -5,8 +5,6 @@ Data Ingestion related constant
 """
 DATA_INGESTION_DIR_NAME: str = "data_ingestion"
 
-DATA_INGESTION_FEATURE_STORE_DIR: str = "feature_store"
-
 ROBOFLOW_WORKSPACE = "roboflow-universe-project"
 
 ROBOFLOW_PROJECT = "personal-protective-equipment-combined-model"
