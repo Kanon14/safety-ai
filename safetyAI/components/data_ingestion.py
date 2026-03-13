@@ -1,16 +1,10 @@
 import os
 import sys
 from roboflow import Roboflow
-from dotenv import load_dotenv
 from safetyAI.logger import logging
 from safetyAI.exception import AppException
 from safetyAI.entity.config_entity import DataIngestionConfig
 from safetyAI.entity.artifacts_entity import DataIngestionArtifact
-
-load_dotenv()
-
-ROBOFLOW_API_KEY = os.getenv("ROBOFLOW_API_KEY")
-
 
 class DataIngestion:
     """
@@ -42,7 +36,7 @@ class DataIngestion:
             dataset_download_dir = self.data_ingestion_config.data_ingestion_dir
             os.makedirs(dataset_download_dir, exist_ok=True)
         
-            rf = Roboflow(api_key=ROBOFLOW_API_KEY)
+            rf = Roboflow()
             roboflow_workspace = self.data_ingestion_config.roboflow_workspace
             roboflow_project = self.data_ingestion_config.roboflow_project
 
