@@ -119,9 +119,9 @@ class TrainPipeline:
             data_ingestion_artifact = self.start_data_ingestion()
             
             # Step 2: Data Validation
-            data_validation_artifact = self.start_data_validation(
-                data_ingestion_artifact = data_ingestion_artifact
-            )
+            # data_validation_artifact = self.start_data_validation(
+            #     data_ingestion_artifact = data_ingestion_artifact
+            # )
             
             # # Step 3: Model Training (if validation is successful)
             # if data_validation_artifact.validation_status == True:

@@ -7,7 +7,7 @@ DATA_INGESTION_DIR_NAME: str = "data_ingestion"
 
 ROBOFLOW_WORKSPACE = "roboflow-universe-projects"
 
-ROBOFLOW_PROJECT = "personal-protective-equipment-combined-model"  
+ROBOFLOW_PROJECT = "fire-and-smoke-segmentation"  #  personal-protective-equipment-combined-model
 
 """
 Data Validation related constant

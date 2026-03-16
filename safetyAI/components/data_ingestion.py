@@ -41,8 +41,10 @@ class DataIngestion:
             roboflow_project = self.data_ingestion_config.roboflow_project
 
             project = rf.workspace(roboflow_workspace).project(roboflow_project)
-            version = project.version(8)
-            dataset = version.download("yolo26", location=dataset_download_dir)
+            version = project.version(2)
+            dataset = version.download("yolo26", 
+                                       location=os.path.abspath(dataset_download_dir + f"//{version.name}"),
+                                       overwrite=True) # Solved: Required dataset name for the saved dir
             
             logging.info(f"Downloaded data from {roboflow_workspace}/{roboflow_project} to {dataset_download_dir}")
             
