@@ -46,7 +46,7 @@ class DataIngestion:
                                        location=os.path.abspath(dataset_download_dir + f"//{version.name}"),
                                        overwrite=True) # Solved: Required dataset name for the saved dir
             
-            logging.info(f"Downloaded data from {roboflow_workspace}/{roboflow_project} to {dataset_download_dir}")
+            logging.info(f"Downloaded data from {roboflow_workspace}\{roboflow_project} to {dataset_download_dir}")
             
             dataset_path = os.path.join(dataset_download_dir, dataset.name)
             

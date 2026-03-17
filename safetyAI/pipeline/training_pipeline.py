@@ -3,15 +3,15 @@ from safetyAI.logger import logging
 from safetyAI.exception import AppException
 from safetyAI.components.data_ingestion import DataIngestion
 from safetyAI.components.data_validation import DataValidation
-# from safetyAI.components.model_trainer import ModelTrainer
+from safetyAI.components.model_trainer import ModelTrainer
 
 from safetyAI.entity.config_entity import (DataIngestionConfig,
-                                               DataValidationConfig,
-                                               )
+                                           DataValidationConfig,
+                                           ModelTrainerConfig)
 
 from safetyAI.entity.artifacts_entity import (DataIngestionArtifact,
-                                                  DataValidationArtifact,
-                                                  )
+                                              DataValidationArtifact,
+                                              ModelTrainerArtifact)
 
 class TrainPipeline:
     """
@@ -25,7 +25,7 @@ class TrainPipeline:
         """
         self.data_ingestion_config = DataIngestionConfig() #  Configuration for data ingestion
         self.data_validation_config = DataValidationConfig() # Configuration for data validation
-        # self.model_trainer_config = ModelTrainerConfig() # Configuration for model training
+        self.model_trainer_config = ModelTrainerConfig() # Configuration for model training
         
     
     def start_data_ingestion(self) -> DataIngestionArtifact:
@@ -83,26 +83,30 @@ class TrainPipeline:
             raise AppException(e, sys)
             
     
-    # def start_model_trainer(self) -> ModelTrainerArtifact:
-    #     """
-    #     Initiates the model training process.
+    def start_model_trainer(self, data_ingestion_artifact: DataIngestionArtifact) -> ModelTrainerArtifact:
+        """
+        Initiates the model training process.
 
-    #     :return: ModelTrainerArtifact containing the path to the trained model.
-    #     :raises AppException: If model training fails.
-    #     """
-    #     try:
-    #         # Create an instance of the ModelTrainer class
-    #         model_trainer = ModelTrainer(
-    #             model_trainer_config = self.model_trainer_config
-    #         )
+        :return: ModelTrainerArtifact containing the path to the trained model.
+        :raises AppException: If model training fails.
+        """
+        logging.info("Entered the start_model_trainer method of TrainPipeline class")
+        try:
+            # Create an instance of the ModelTrainer class
+            model_trainer = ModelTrainer(
+                data_ingestion_artifact = data_ingestion_artifact,
+                model_trainer_config = self.model_trainer_config
+            )
             
-    #         # Execute model training and retrieve artifacts
-    #         model_trainer_artifact = model_trainer.initiate_model_trainer()
+            # Execute model training and retrieve artifacts
+            model_trainer_artifact = model_trainer.initiate_model_trainer()
+            logging.info("Completed the model training operation")
+            logging.info("Exited start_model_trainer method of TrainPipeline class")
             
-    #         return model_trainer_artifact
+            return model_trainer_artifact
         
-    #     except Exception as e:
-    #         raise AppException(e, sys)
+        except Exception as e:
+            raise AppException(e, sys)
        
      
     def run_pipeline(self) -> None:
@@ -123,11 +127,13 @@ class TrainPipeline:
                 data_ingestion_artifact = data_ingestion_artifact
             )
             
-            # # Step 3: Model Training (if validation is successful)
-            # if data_validation_artifact.validation_status == True:
-            #     model_trainer_artifact = self.start_model_trainer()
-            # else:
-            #     raise Exception("Your data is not in correct format")
+            # Step 3: Model Training (if validation is successful)
+            if data_validation_artifact.validation_status is True:
+                model_trainer_artifact = self.start_model_trainer(
+                    data_ingestion_artifact = data_ingestion_artifact
+                )
+            else:
+                raise Exception("Your data is not in correct format")
         
         except Exception as e:
             raise AppException(e, sys)

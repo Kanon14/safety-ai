@@ -14,5 +14,5 @@ os.environ["ROBOFLOW_API_KEY"] = ROBOFLOW_API_KEY
 # Instantiate the TrainPipeline class
 train_pipeline = TrainPipeline()
 
-# Test 1: Run test on data ingestion -> data validation
+# Test 2: Run test on data ingestion -> data validation -> model trainer
 train_pipeline.run_pipeline()

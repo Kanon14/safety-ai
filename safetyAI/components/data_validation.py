@@ -5,7 +5,7 @@ from safetyAI.logger import logging
 from safetyAI.exception import AppException
 from safetyAI.entity.config_entity import DataValidationConfig
 from safetyAI.entity.artifacts_entity import (DataIngestionArtifact,
-                                                    DataValidationArtifact)
+                                              DataValidationArtifact)
 
 
 class DataValidation:

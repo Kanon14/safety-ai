@@ -7,7 +7,7 @@ DATA_INGESTION_DIR_NAME: str = "data_ingestion"
 
 ROBOFLOW_WORKSPACE = "roboflow-universe-projects"
 
-ROBOFLOW_PROJECT = "fire-and-smoke-segmentation"  #  personal-protective-equipment-combined-model
+ROBOFLOW_PROJECT = "personal-protective-equipment-combined-model"  # TODO: Testing Small Dataset: fire-and-smoke-segmentation
 
 """
 Data Validation related constant
@@ -24,6 +24,6 @@ Model Trainer related constant
 """
 MODEL_TRAINER_DIR_NAME: str = "model_trainer"
 
-MODEL_TRAINER_PRETRAINED_WEIGHT_NAME: str = "yolo26s.pt"
+MODEL_TRAINER_PRETRAINED_WEIGHT_NAME: str = "yolo26s.pt" 
 
-MODEL_TRAINER_NO_EPOCHS: int = 100
+MODEL_TRAINER_NO_EPOCHS: int = 100 # TODO: Testing: 1 epoch
