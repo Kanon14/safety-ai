@@ -1,8 +1,8 @@
 import streamlit as st
 
 detection_app_page = st.Page(
-    page="app_pages/detection_app.py", 
-    title="E-Waste Detection Application",
+    page="app/detection_feature.py", 
+    title="Safety AI Detection",
     icon="🤖",
 )
 

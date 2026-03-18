@@ -24,7 +24,7 @@ if menu == "Train Model":
 
 # Image Detection
 elif menu == "Image Detection":
-    model = YOLO("../models/safety_ai_fine_tuned_yolo26s.pt")
+    model = YOLO("models\safety_ai_fine_tuned_yolo26s.pt")
     st.header("📱 Upload an Image for Safety AI Detection", divider="green")
     uploaded_file = st.file_uploader("Choose an image file", type=["jpg", "png", "jpeg"])
     
@@ -37,7 +37,7 @@ elif menu == "Image Detection":
         img = cv2.imdecode(file_bytes, 1)
 
         with col1:
-            st.image(img, caption="Uploaded Image", use_container_width=True, channels="BGR")
+            st.image(img, caption="Uploaded Image", width="content", channels="BGR")
 
        # Perform detection
         with st.spinner("Detecting objects..."):
@@ -45,12 +45,12 @@ elif menu == "Image Detection":
             annotated_image = results[0].plot()
 
         with col2:
-            st.image(annotated_image, caption="Detection Results", use_container_width=True, channels="BGR")
+            st.image(annotated_image, caption="Detection Results", width="content", channels="BGR")
         st.success("Detection complete!")
 
 # Webcam Detection
 elif menu == "Webcam Detection":
-    model = YOLO("../models/safety_ai_fine_tuned_yolo26s.pt")
+    model = YOLO("models\safety_ai_fine_tuned_yolo26s.pt")
     st.header("🎥 Real-Time Detection from Webcam", divider="green")
     
     # Create two columns for Start and Stop Buttons
@@ -91,7 +91,7 @@ elif menu == "Webcam Detection":
                 prev_frame_time = new_frame_time
             
                 # Update the video placeholder with the annotated frame
-                video_placeholder.image(annotated_frame, use_container_width=True, channels="BGR")
+                video_placeholder.image(annotated_frame, width="content", channels="BGR")
                 
                 # Update the FPS placeholder with the current FPS value
                 fps_placeholder.markdown(f"**FPS:** {int(fps)}")
@@ -106,7 +106,7 @@ elif menu == "Webcam Detection":
 
 # IP Webcam Detection
 elif menu == "IP Webcam Detection":
-    model = YOLO("../models/safety_ai_fine_tuned_yolo26s.pt")
+    model = YOLO("models\safety_ai_fine_tuned_yolo26s.pt")
     st.header("🧿 Real-Time Detection from IP Webcam", divider="green")
 
     # Create two columns for Start and Stop Buttons
@@ -151,7 +151,7 @@ elif menu == "IP Webcam Detection":
                     prev_frame_time = new_frame_time   
 
                     # Update the video placeholder with the annotated frame
-                    video_placeholder.image(annotated_frame, use_container_width=True, channels="BGR")
+                    video_placeholder.image(annotated_frame, width="content", channels="BGR")
                     
                     # Update the FPS placeholder with the current FPS value
                     fps_placeholder.markdown(f"**FPS:** {int(fps)}")
