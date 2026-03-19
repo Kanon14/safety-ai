@@ -1,6 +1,5 @@
 import os
 import sys
-import shutil
 from safetyAI.logger import logging
 from safetyAI.exception import AppException
 from safetyAI.entity.config_entity import DataValidationConfig
@@ -78,9 +77,6 @@ class DataValidation:
             
             logging.info("Exited initiate_data_validation method of DataValidation class")
             logging.info(f"Data Validation artifact: {data_validation_artifact}")
-            
-            # if status: # TODO: Comment first, later check if required in the model training
-            #     shutil.copy(self.data_ingestion_artifact.dataset_path, os.getcwd())
                 
             return data_validation_artifact
         
